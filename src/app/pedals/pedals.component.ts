@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedal } from '../pedal';
+import { PEDALS} from '../pedals';
+
 
 @Component({
   selector: 'app-pedals',
@@ -7,10 +9,8 @@ import { Pedal } from '../pedal';
   styleUrls: ['./pedals.component.css'],
 })
 export class PedalsComponent implements OnInit {
-  pedal: Pedal = {
-    id: 1,
-    name: 'Dunlop Fuzz Face',
-  };
+  
+  pedals = PEDALS;
 
   constructor() {}
 
