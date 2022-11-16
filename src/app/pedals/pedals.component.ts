@@ -12,8 +12,16 @@ import { PEDALS } from '../pedals';
 export class PedalsComponent implements OnInit {
 
   pedals = PEDALS;
+  selectedPedal?: Pedal;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+
+  onSelect(pedal: Pedal): void {
+    this.selectedPedal = pedal;
+  }
 }

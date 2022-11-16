@@ -1,16 +1,17 @@
 <h2>Legendary Pedals</h2>
 <ul class="pedals">
-  <li>
-    <button type="button">
-      <span class="badge">{{pedal.id}}</span>
-      <span class="name">{{pedal.name}}</span>
+  <li *ngFor="let pedal of pedals">
+    <button type="button" (click)="onSelect(pedal)">
+      <span class="badge">{{ pedal.id }}</span>
+      <span class="name">{{ pedal.name }}</span>
     </button>
   </li>
 </ul>
 
-<h2>{{pedal.name | uppercase}} Details</h2>
-<div><span>id:  </span>{{pedal.id}}</div>
+<div *ngIf="selectedPedal">
+<h2>{{ selectedPedal.name | uppercase }} Details</h2>
+<div>id:{{ selectedPedal.id }}</div>
 <div>
-  <label for="name"> Pedal name: </label>
-  <input id="name" [(ngModel)]="pedal.name" placeholder="name">
+  <label for="pedal-name"> Pedal name: </label>
+  <input id="pedal-name" [(ngModel)]="selectedPedal.name" placeholder="name" />
 </div>
