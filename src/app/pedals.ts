@@ -10,5 +10,4 @@ export const PEDALS: Pedal[] = [
   { id: 8, name: 'Boss DD-7' },
   { id: 9, name: 'Crybaby Dunlop' },
   { id: 10, name: 'Klon ktr Centaur overdrive' }
-
 ];
