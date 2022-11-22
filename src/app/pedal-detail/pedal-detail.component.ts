@@ -1,0 +1,1 @@
+import { Pedal } from '../pedal';
