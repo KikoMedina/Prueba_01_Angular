@@ -1,7 +1,8 @@
 <h2>Legendary Pedals</h2>
 <ul class="pedals">
   <li *ngFor="let pedal of pedals">
-    <button type="button" (click)="onSelect(pedal)">
+    <button [class.selected]="pedal === selectedPedal" type="button"
+    (click)="onSelect(pedal)">
       <span class="badge">{{ pedal.id }}</span>
       <span class="name">{{ pedal.name }}</span>
     </button>
