@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedal } from '../pedal';
-import { PEDALS } from '../pedals';
-
+import { PedalService } from '../pedal.service';
 
 @Component({
   selector: 'app-pedals',
   templateUrl: './pedals.component.html',
-  styleUrls: ['./pedals.component.css']
+  styleUrls: ['./pedals.component.css'],
 })
-
 export class PedalsComponent implements OnInit {
-
-  pedals = PEDALS;
+  pedals: Pedal[] = [];
   selectedPedal?: Pedal;
 
-  constructor() {}
+  constructor(private pedalService: PedalService) {}
 
   ngOnInit(): void {
-
+    this.getPedals();
   }
-
 
   onSelect(pedal: Pedal): void {
     this.selectedPedal = pedal;
+  }
+
+  getPedals(): void {
+    this.pedals = this.pedalService.getPedals();
   }
 }
