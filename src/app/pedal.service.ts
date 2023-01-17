@@ -11,11 +11,10 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class PedalService {
-  constructor() {}
+  constructor(private messageService: MessageService) {}
   getPedals(): Observable<Pedal[]> {
     const pedals = of(PEDALS);
     this.messageService.add('PedalService: fetched pedals');
     return pedals;
   }
 }
-constructor(private messageService: MessageService) { }
