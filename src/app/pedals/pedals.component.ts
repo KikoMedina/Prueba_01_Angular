@@ -11,8 +11,11 @@ import { MessageService } from '../message.service';
 export class PedalsComponent implements OnInit {
   selectedPedal?: Pedal;
   pedals: Pedal[] = [];
-  
-  constructor(private pedalService: PedalService, private messageService: MessageService) {}
+
+  constructor(
+    private pedalService: PedalService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getPedals();
@@ -20,11 +23,10 @@ export class PedalsComponent implements OnInit {
 
   onSelect(pedal: Pedal): void {
     this.selectedPedal = pedal;
-    this.messagePedal.add(`PedalsComponent: Selected pedal id=${pedal.id}`);
+    this.messageService.add(`PedalsComponent: Selected pedal id=${pedal.id}`);
   }
 
   getPedals(): void {
-    this.pedalService.getPedals()
-      .subscribe(pedals => this.pedals = pedals);
+    this.pedalService.getPedals().subscribe((pedals) => (this.pedals = pedals));
   }
 }
