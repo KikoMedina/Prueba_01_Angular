@@ -25,6 +25,6 @@ export class PedalsComponent implements OnInit {
 
   getPedals(): void {
     this.pedalService.getPedals()
-      .subscribe(pedals => this.pedals = pedals)
+      .subscribe(pedals => this.pedals = pedals);
   }
 }
