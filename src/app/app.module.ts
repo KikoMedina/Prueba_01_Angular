@@ -7,6 +7,8 @@ import { PedalsComponent } from './pedals/pedals.component';
 import { PedalDetailComponent } from './pedal-detail/pedal-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,7 @@ import { MessagesComponent } from './messages/messages.component';
     PedalDetailComponent,
     MessagesComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
