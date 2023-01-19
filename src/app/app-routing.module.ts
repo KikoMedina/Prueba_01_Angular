@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PedalsComponent } from './pedals/pedals.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PedalDetailComponent } from './pedal-detail/pedal-detail.component';
 
 const routes: Routes = [
-  { path: 'pedals', component: PedalsComponent },
-  { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'detail/:id', component: PedalDetailComponent },
+  { path: 'pedals', component: PedalsComponent },
 ];
 
 @NgModule({
