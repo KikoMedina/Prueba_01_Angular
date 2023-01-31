@@ -1,10 +1,9 @@
 <div *ngIf="pedal">
-  
-  <h2>{{pedal.name | uppercase}} Details</h2>
-  <div><span>id:</span>{{pedal.id}}</div>
+  <h2>{{ pedal.name | uppercase }} Details</h2>
+  <div><span>id:</span>{{ pedal.id }}</div>
   <div>
     <label for="pedal-name"> Pedal name: </label>
-    <input id="pedal-name" [(ngModel)]="pedal.name" placeholder="name">
+    <input id="pedal-name" [(ngModel)]="pedal.name" placeholder="name" />
   </div>
-
+  <button type="button" (click)="goBack()">go back</button>
 </div>

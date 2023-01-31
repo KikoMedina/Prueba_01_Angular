@@ -23,10 +23,12 @@ export class PedalDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getPedal();
   }
-  
+
   getPedal(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.pedalService.getPedal(id)
-      .subscribe(pedal => this.pedal = pedal);
+    this.pedalService.getPedal(id).subscribe((pedal) => (this.pedal = pedal));
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
