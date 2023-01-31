@@ -1,9 +1,8 @@
-import { Pedal } from '../pedal';
 import { Component, OnInit, Input } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { Pedal } from '../pedal';
 import { PedalService } from '../pedal.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class PedalDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: PedalService,
+    private pedalService: PedalService,
     private location: Location
   ) {}
 
@@ -28,6 +27,7 @@ export class PedalDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.pedalService.getPedal(id).subscribe((pedal) => (this.pedal = pedal));
   }
+
   goBack(): void {
     this.location.back();
   }

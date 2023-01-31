@@ -18,7 +18,8 @@ export class PedalService {
     return pedals;
   }
   getPedal(id: number): Observable<Pedal> {
-    const pedal = PEDALS.find((h) => h.id === id)!;
+    const pedal = PEDALS.find((p) => p.id === id)!;
     this.messageService.add(`PedalService: fetched pedal id=${id}`);
+    return of(pedal);
   }
 }
