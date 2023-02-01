@@ -4,7 +4,11 @@
   <input id="new-pedal" #pedalName />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(pedalName.value); pedalName.value=''">
+  <button
+    type="button"
+    class="add-button"
+    (click)="add(pedalName.value); pedalName.value = ''"
+  >
     Add pedal
   </button>
 </div>
@@ -13,5 +17,13 @@
     <a routerLink="/detail/{{ pedal.id }}">
       <span class="badge">{{ pedal.id }}</span> {{ pedal.name }}
     </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete pedal"
+      (click)="delete(pedal)"
+    >
+      X
+    </button>
   </li>
 </ul>
