@@ -21,6 +21,7 @@ export class PedalsComponent implements OnInit {
   getPedals(): void {
     this.pedalService.getPedals().subscribe(pedals => this.pedals = pedals);
   }
+
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
@@ -29,4 +30,10 @@ export class PedalsComponent implements OnInit {
         this.pedals.push(pedal);
       });
   }
+
+  delete(pedal: Pedal): void {
+    this.pedals = this.pedals.filter(p => p !== pedal);
+    this.pedalService.deletePedal(pedal.id).subscribe();
+  }
+
 }

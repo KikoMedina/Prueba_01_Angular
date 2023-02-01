@@ -57,14 +57,23 @@ export class PedalService {
     );
   }
   httpOptions = {
-    headers: new HttpHeaders( { 'Content-Type' : 'application/json'})
-    
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   /** POST: add a new pedal to the server */
-addPedal(pedal: Pedal): Observable<Pedal> {
-  return this.http.post<Pedal>(this.pedalsUrl, pedal, this.httpOptions).pipe(
-    tap((newPedal: Pedal) => this.log(`added pedal w/ id=${newPedal.id}`)),
-    catchError(this.handleError<Pedal>('addPedal'))
-  );
-}
+  addPedal(pedal: Pedal): Observable<Pedal> {
+    return this.http.post<Pedal>(this.pedalsUrl, pedal, this.httpOptions).pipe(
+      tap((newPedal: Pedal) => this.log(`added pedal w/ id=${newPedal.id}`)),
+      catchError(this.handleError<Pedal>('addPedal'))
+    );
+  }
+
+  /** DELETE: delete the pedal from the server */
+  deletePedal(id: number): Observable<Pedal> {
+    const url = `${this.pedalsUrl}/${id}`;
+
+    return this.http.delete<Pedal>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted pedal id=${id}`)),
+      catchError(this.handleError<Pedal>('deletePedal'))
+    );
+  }
 }
