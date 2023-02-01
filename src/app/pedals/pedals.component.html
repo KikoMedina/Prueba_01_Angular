@@ -1,4 +1,13 @@
 <h2>Selected Legendary Pedals</h2>
+<div>
+  <label for="new-pedal">Pedal name: </label>
+  <input id="new-pedal" #pedalName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(pedalName.value); pedalName.value=''">
+    Add pedal
+  </button>
+</div>
 <ul class="pedals">
   <li *ngFor="let pedal of pedals">
     <a routerLink="/detail/{{ pedal.id }}">

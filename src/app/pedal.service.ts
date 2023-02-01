@@ -49,7 +49,7 @@ export class PedalService {
       return of(result as T);
     };
   }
-  /** PUT: update the hero on the server */
+  /** PUT: update the pedal on the server */
   updatePedal(pedal: Pedal): Observable<any> {
     return this.http.put(this.pedalsUrl, pedal, this.httpOptions).pipe(
       tap((_) => this.log(`updated pedal id=${pedal.id}`)),
@@ -60,4 +60,11 @@ export class PedalService {
     headers: new HttpHeaders( { 'Content-Type' : 'application/json'})
     
   };
+  /** POST: add a new pedal to the server */
+addPedal(pedal: Pedal): Observable<Pedal> {
+  return this.http.post<Pedal>(this.pedalsUrl, pedal, this.httpOptions).pipe(
+    tap((newPedal: Pedal) => this.log(`added pedal w/ id=${newPedal.id}`)),
+    catchError(this.handleError<Pedal>('addPedal'))
+  );
+}
 }
