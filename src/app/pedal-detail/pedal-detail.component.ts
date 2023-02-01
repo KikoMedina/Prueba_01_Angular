@@ -31,4 +31,10 @@ export class PedalDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+  save(): void {
+    if (this.pedal) {
+      this.pedalService.updatePedal(this.pedal)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

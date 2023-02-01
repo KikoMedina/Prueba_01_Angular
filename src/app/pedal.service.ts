@@ -30,7 +30,7 @@ export class PedalService {
   getPedal(id: number): Observable<Pedal> {
     const url = `${this.pedalsUrl}/${id}`;
     return this.http.get<Pedal>(url).pipe(
-      tap(_ => this.log(`fetched pedal id=${id}`)),
+      tap((_) => this.log(`fetched pedal id=${id}`)),
       catchError(this.handleError<Pedal>(`getPedal id=${id}`))
     );
   }
@@ -49,4 +49,15 @@ export class PedalService {
       return of(result as T);
     };
   }
+  /** PUT: update the hero on the server */
+  updatePedal(pedal: Pedal): Observable<any> {
+    return this.http.put(this.pedalsUrl, pedal, this.httpOptions).pipe(
+      tap((_) => this.log(`updated pedal id=${pedal.id}`)),
+      catchError(this.handleError<any>('updatePedal'))
+    );
+  }
+  httpOptions = {
+    headers: new HttpHeaders( { 'Content-Type' : 'application/json'})
+    
+  };
 }
