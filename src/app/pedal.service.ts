@@ -28,9 +28,11 @@ export class PedalService {
       .pipe(catchError(this.handleError<Pedal[]>('getPedals', [])));
   }
   getPedal(id: number): Observable<Pedal> {
-    const pedal = PEDALS.find((p) => p.id === id)!;
-    this.messageService.add(`PedalService: fetched pedal id=${id}`);
-    return of(pedal);
+    const url = `${this.pedalsUrl}/${id}`;
+    return this.http.get<Pedal>(url).pipe(
+      tap(_ => this.log(`fetched pedal id=${id}`)),
+      catchError(this.handleError<Pedal>(`getPedal id=${id}`))
+    );
   }
   private log(message: string) {
     this.messageService.add(`PedalService: ${message}`);
