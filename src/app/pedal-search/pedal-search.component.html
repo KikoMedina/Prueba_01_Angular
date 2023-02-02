@@ -1,0 +1,12 @@
+<div id="search-component">
+  <label for="search-box">Pedal Search</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let pedal of pedals$ | async">
+      <a routerLink="/detail/{{ pedal.id }}">
+        {{ pedal.name }}
+      </a>
+    </li>
+  </ul>
+</div>

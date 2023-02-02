@@ -76,4 +76,19 @@ export class PedalService {
       catchError(this.handleError<Pedal>('deletePedal'))
     );
   }
+  /* GET pedals whose name contains search term */
+  searchPedals(term: string): Observable<Pedal[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Pedal[]>(`${this.pedalsUrl}/?name=${term}`).pipe(
+      tap((x) =>
+        x.length
+          ? this.log(`found pedals matching "${term}"`)
+          : this.log(`no pedals matching "${term}"`)
+      ),
+      catchError(this.handleError<Pedal[]>('searchHeroes', []))
+    );
+  }
 }
