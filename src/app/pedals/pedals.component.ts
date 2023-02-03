@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedal } from '../pedal';
 import { PedalService } from '../pedal.service';
-import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-pedals',
